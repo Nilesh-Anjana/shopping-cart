@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anjana Store</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-image: url('https://th.bing.com/th?id=OIP.GLR4gm8MNqZkulFIwgvMeQHaEv&w=312&h=200&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2');
+        background-size: cover; /* Cover the entire background */
+        background-position: center; /* Center the background image */
+    }
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding-top: 100px;
+        text-align: center; /* Center-align the content */
+    }
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end; /* Align buttons to the right */
+        padding: 20px;
+    }
+    .search-bar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px; /* Added margin to separate from previous content */
+    }
+    .search-input {
+        width: 200px; /* Adjusted width of input */
+        border: none;
+        outline: none;
+        font-size: 18px;
+        padding: 8px; /* Added padding */
+        border-radius: 5px; /* Added border radius */
+    }
+    .search-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        padding: 10px 15px; /* Adjusted padding */
+        cursor: pointer;
+        margin-left: 5px; /* Added margin to separate from input */
+    }
+    .search-button:hover {
+        background-color: #45a049;
+    }
+    .search-icon {
+        font-size: 20px;
+    }
+    .login-register-button {
+        background-color: #f44336;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none; /* Remove default anchor text decoration */
+        margin: 5px; /* Added margin for spacing */
+    }
+    .login-register-button:hover {
+        background-color: #d32f2f;
+    }
+    h1 {
+        font-size: 36px; /* Increase the font size */
+        color: white; /* Set text color to white */
+    }
+    h2 {
+        color: white; /* Set text color to white */
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Anjana Store</h1>
+        <div class="header">
+            <a href="login.html" class="login-register-button">Login</a>
+            <a href="register.html" class="login-register-button">Register</a> <!-- Added Register button -->
+        </div>
+        <h2>What are you looking for today?</h2>
+        <div class="search-bar">
+            <input type="text" class="search-input" placeholder="Search...">
+            <a href="items.html" class="search-button"><span class="search-icon">&#62;</span></a>
+        </div>
+    </div>
+</body>
+</html>

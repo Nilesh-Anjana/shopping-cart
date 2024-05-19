@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login | Anjana Store</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding-top: 100px;
+        text-align: center; /* Center-align the content */
+    }
+    .input-block {
+        margin-bottom: 20px;
+    }
+    .input-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .input-field {
+        width: 100%;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    .user-details-button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+        text-decoration: none; /* Remove default anchor text decoration */
+    }
+    .user-details-button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form>
+            <div class="input-block">
+                <label for="username" class="input-label">Username:</label>
+                <input type="text" id="username" name="username" class="input-field" required>
+            </div>
+            <div class="input-block">
+                <label for="mobile" class="input-label">Mobile:</label>
+                <input type="text" id="mobile" name="mobile" class="input-field" required>
+            </div>
+            <div class="input-block">
+                <label for="password" class="input-label">Password:</label>
+                <input type="password" id="password" name="password" class="input-field" required>
+            </div>
+            <a href="user_detail.html" class="user-details-button">User Details</a>
+        </form>
+    </div>
+</body>
+</html>

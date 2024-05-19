@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment | Anjana Store</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding-top: 50px;
+        text-align: center;
+    }
+    h2 {
+        margin-bottom: 20px;
+    }
+    form {
+        margin-top: 20px;
+    }
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+    input[type="text"] {
+        width: 300px;
+        padding: 8px;
+        margin-bottom: 10px;
+    }
+    input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    .error {
+        color: red;
+        margin-top: 5px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h2>Payment</h2>
+        <div id="itemDetails">
+            <h3>Item Details</h3>
+            <p><strong>Name:</strong> <span id="itemName"></span></p>
+            <p><strong>Description:</strong> <span id="itemDescription"></span></p>
+            <p><strong>Price:</strong> <span id="itemPrice"></span></p>
+        </div>
+        <form id="paymentForm" action="confirmation.html" method="POST">
+            <h3>Payment Details</h3>
+            <label for="cardNumber">Card Number:</label><br>
+            <input type="text" id="cardNumber" name="cardNumber" required><br>
+            <span class="error" id="cardNumberError"></span><br>
+            <label for="expiryDate">Expiry Date:</label><br>
+            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YYYY" required><br>
+            <span class="error" id="expiryDateError"></span><br>
+            <label for="cvv">CVV:</label><br>
+            <input type="text" id="cvv" name="cvv" required><br>
+            <span class="error" id="cvvError"></span><br>
+            <input type="submit" value="Pay Now">
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var selectedItem = localStorage.getItem('selectedItem');
+            if (selectedItem) {
+                selectedItem = JSON.parse(selectedItem);
+                document.getElementById('itemName').textContent = selectedItem.name;
+                document.getElementById('itemDescription').textContent = selectedItem.description;
+                document.getElementById('itemPrice').textContent = selectedItem.price;
+            }
+
+            document.getElementById('paymentForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var cardNumber = document.getElementById('cardNumber').value;
+                var expiryDate = document.getElementById('expiryDate').value;
+                var cvv = document.getElementById('cvv').value;
+
+                // Reset errors
+                document.getElementById('cardNumberError').textContent = '';
+                document.getElementById('expiryDateError').textContent = '';
+                document.getElementById('cvvError').textContent = '';
+
+                // Validate card number
+                if (cardNumber !== '123456') {
+                    document.getElementById('cardNumberError').textContent = 'Invalid card number';
+                    return;
+                }
+
+                // Validate expiry date
+                if (expiryDate !== '1210') {
+                    document.getElementById('expiryDateError').textContent = 'Invalid expiry date';
+                    return;
+                }
+
+                // Validate CVV
+                if (cvv !== '123') {
+                    document.getElementById('cvvError').textContent = 'Invalid CVV';
+                    return;
+                }
+
+                // If all validations pass, submit the form
+                document.getElementById('paymentForm').submit();
+            });
+        });
+    </script>
+</body>
+</html>

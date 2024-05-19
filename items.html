@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Items | Anjana Store</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding-top: 50px;
+        text-align: center;
+    }
+    .item {
+        display: inline-block;
+        width: 200px;
+        margin: 20px;
+        text-align: left;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+    }
+    .item img {
+        width: 100%;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+    h2 {
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h2>Items</h2>
+        <div class="item">
+            <img src="https://th.bing.com/th?q=Clothes+Jacket&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.3&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" alt="Clothes Jacket">
+            <h3>Clothes Jacket</h3>
+            <p>Description of Clothes Jacket</p>
+            <p>$10.00</p>
+            <button onclick="addToCart('Clothes Jacket', 'Description of Clothes Jacket', 10.00)">Add to Cart</button>
+        </div>
+        <div class="item">
+            <img src="https://th.bing.com/th?q=Honda+Touring+150&w=120&h=120&c=1&rs=1&qlt=90&cb=1&dpr=1.3&pid=InlineBlock&mkt=en-IN&cc=IN&setlang=en&adlt=moderate&t=1&mw=247" alt="Honda Touring 150">
+            <h3>Honda Touring 150</h3>
+            <p>Description of Honda Touring 150</p>
+            <p>$20.00</p>
+            <button onclick="addToCart('Honda Touring 150', 'Description of Honda Touring 150', 20.00)">Add to Cart</button>
+        </div>
+        <div class="item">
+            <img src="https://th.bing.com/th?id=OIP.0Wl5ZBQ1bjhraO20BMybbgHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="Additional Item 1">
+            <h3>Helmet</h3>
+            <p>Description of Additional Item 1</p>
+            <p>$30.00</p>
+            <button onclick="addToCart('Additional Item 1', 'Description of Additional Item 1', 30.00)">Add to Cart</button>
+        </div>
+        <div class="item">
+            <img src="https://th.bing.com/th?id=OIP.ZjmKMJrdvUriTPOYGq0NeQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2" alt="Additional Item 2">
+            <h3>Gloves</h3>
+            <p>Description of Additional Item 2</p>
+            <p>$40.00</p>
+            <button onclick="addToCart('Additional Item 2', 'Description of Additional Item 2', 40.00)">Add to Cart</button>
+        </div>
+        <!-- Add more items here -->
+        <a href="cart.html"><button>View Cart</button></a>
+    </div>
+
+    <script>
+        function addToCart(name, description, price) {
+            var cartItem = { name: name, description: description, price: price };
+            var existingCartItems = localStorage.getItem('cartItems');
+            if (!existingCartItems) {
+                existingCartItems = [];
+            } else {
+                existingCartItems = JSON.parse(existingCartItems);
+            }
+            existingCartItems.push(cartItem);
+            localStorage.setItem('cartItems', JSON.stringify(existingCartItems));
+            alert('Item added to cart!');
+        }
+    </script>
+</body>
+</html>

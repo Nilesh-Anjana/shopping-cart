@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart | Anjana Store</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        width: 80%;
+        margin: 0 auto;
+        padding-top: 50px;
+        text-align: center;
+    }
+    .cart-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between; /* Added space between items */
+        border-bottom: 1px solid #ccc;
+        padding: 10px 0;
+    }
+    .cart-item img {
+        width: 100px;
+        border-radius: 5px;
+        margin-right: 20px;
+    }
+    .cart-item p {
+        margin: 0;
+    }
+    .proceed-to-buy,
+    .remove-item {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 8px 20px;
+        cursor: pointer;
+    }
+    .proceed-to-buy:hover,
+    .remove-item:hover {
+        background-color: #45a049;
+    }
+    h2 {
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cart</h2>
+        <div class="cart-items">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var cartItems = localStorage.getItem('cartItems');
+            if (cartItems) {
+                cartItems = JSON.parse(cartItems);
+                var cartItemsContainer = document.querySelector('.cart-items');
+                cartItems.forEach(function(item, index) { // Add index for each item
+                    var cartItem = document.createElement('div');
+                    cartItem.classList.add('cart-item');
+
+                    var image = document.createElement('img');
+                    image.src = item.image; // Assuming you store image URLs in cart items
+                    image.alt = item.name;
+
+                    var details = document.createElement('div');
+                    var name = document.createElement('p');
+                    name.textContent = item.name;
+                    var description = document.createElement('p');
+                    description.textContent = item.description;
+                    var price = document.createElement('p');
+                    price.textContent = '$' + item.price;
+
+                    var proceedButton = document.createElement('button');
+                    proceedButton.textContent = 'Proceed to Buy';
+                    proceedButton.classList.add('proceed-to-buy');
+                    // Add event listener to proceed to payment page
+                    proceedButton.addEventListener('click', function() {
+                        var selectedItem = { name: item.name, description: item.description, price: item.price };
+                        localStorage.setItem('selectedItem', JSON.stringify(selectedItem));
+                        window.location.href = 'payment.html'; // Redirect to payment page
+                    });
+
+                    var removeButton = document.createElement('button');
+                    removeButton.textContent = 'Remove Item';
+                    removeButton.classList.add('remove-item');
+                    // Add event listener to remove item from cart
+                    removeButton.addEventListener('click', function() {
+                        cartItems.splice(index, 1); // Remove item from cartItems array
+                        localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Update localStorage
+                        cartItem.remove(); // Remove item from cart view
+                    });
+
+                    details.appendChild(name);
+                    details.appendChild(description);
+                    details.appendChild(price);
+                    details.appendChild(proceedButton);
+                    details.appendChild(removeButton); // Append remove button to details
+
+                    cartItem.appendChild(image);
+                    cartItem.appendChild(details);
+
+                    cartItemsContainer.appendChild(cartItem);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
